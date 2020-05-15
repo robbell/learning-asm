@@ -37,6 +37,30 @@ Minus one added to plus one gives zero. So if a particular bit pattern results i
     1100 0111
     ```
 
+#### Use ORI to load a register with a negative integer
+
+ORI (bitwise or immediate) will accept a 16 bit constant and load it into a 32 bit register. The binary representation will be zero padded to fill 32 bits, so can't be a two's complement negative integer at loading time.
+
+To use ORI to load a negative 16 bit integer into a 32 bit register:
+
+1. Use ORI to load the **positive** version of the integer into a register:
+
+    ```
+    ori $8, $0, 82
+    ```
+1. Reflect each bit using NOR:
+
+    ```
+    nor $8, $8, $0
+    ```
+
+1. Then add one:
+
+    ```
+    ori $9, $0, 1  # load 1 into a register
+    addu $8, $8, $9 # add 1
+    ```
+
 ### Binary addition overflow conditions
 
 * **Unsigned binary** - the result is correct if the carry out of the high order column is zero
