@@ -73,4 +73,4 @@ There is a -u variant for both the `add` and `mult` MIPS operations but they bot
 
 * `add` and `addu` both perform the same operation, add, but the -u suffix means don't trap the overflow
 
-* `mult` and `multu` perform different operation: `mult` is for use with two's complement operands; `multu` is for use with unsigned operands
+* `mult` and `multu` perform different operation: `mult` is for use with two's complement operands; `multu` is for use with unsigned operands. The same is true for `div` and `divu` operations.
