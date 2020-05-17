@@ -37,13 +37,13 @@ Minus one added to plus one gives zero. So if a particular bit pattern results i
     1100 0111
     ```
 
-#### Use ORI to load a register with a negative integer
+#### Use `ori` to load a register with a negative integer
 
-ORI (bitwise or immediate) will accept a 16 bit constant and load it into a 32 bit register. The binary representation will be zero padded to fill 32 bits, so can't be a two's complement negative integer at loading time.
+`ori` (bitwise or immediate) will accept a 16 bit constant and load it into a 32 bit register. The binary representation will be zero padded to fill 32 bits, so can't be a two's complement negative integer at loading time.
 
-To use ORI to load a negative 16 bit integer into a 32 bit register:
+To use `ori` to load a negative 16 bit integer into a 32 bit register:
 
-1. Use ORI to load the **positive** version of the integer into a register:
+1. Use `ori` to load the **positive** version of the integer into a register:
 
     ```
     ori $8, $0, 82
@@ -66,3 +66,11 @@ To use ORI to load a negative 16 bit integer into a 32 bit register:
 * **Unsigned binary** - the result is correct if the carry out of the high order column is zero
 
 * **Two's complement** - the result is correct if the *carry into* the high order column is the same as the *carry out* of column. See [chapter 8](https://chortle.ccsu.edu/AssemblyTutorial/Chapter-08/ass08_23.html).
+
+### -U suffix for MIPS `add` and `mult` operations
+
+There is a -u variant for both the `add` and `mult` MIPS operations but they both have different meanings:
+
+* `add` and `addu` both perform the same operation, add, but the -u suffix means don't trap the overflow
+
+* `mult` and `multu` perform different operation: `mult` is for use with two's complement operands, and `multu` is for use with unsigned operands
