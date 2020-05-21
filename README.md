@@ -81,3 +81,30 @@ There is a -u variant for both the `add` and `mult` MIPS operations but they bot
 |----------|-------|------|
 | word     | 4     | 32   |
 | halfword | 2     | 16   |
+
+### `j` (jump) address calculation
+
+```
+# jump instruction
+0000 1010 1100 0101 0001 0100 0110 0010
+^-----^^------------------------------^
+op-code          26 bit target
+```
+
+After excluding the op-code, a `j` instruction only has 26 spare bits in which to define the jump destination address. In order to calculate the 32 bit jump location two transformations happen:
+
+1. The 26 bits are word aligned by shifting the 26 bits **left** two places (inserting 00 into the low-order bits):
+
+    ```
+    10 1100 0101 0001 0100 0110 0010 00
+    ^------------------------------^ ^^
+              26 bit target          WA
+    ```
+
+1. The four high-order bits from the PC for the original jump instruction are prepended:
+
+    ```
+    01 0110 1100 0101 0001 0100 0110 0010 00
+    ^---^^------------------------------^ ^^
+     PC            26 bit target          WA
+    ```
