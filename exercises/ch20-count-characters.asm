@@ -32,4 +32,5 @@ done:
         sll $0, $0, 0      # target for branch
 
         .data
-string: .asciiz  "asd"
+string: 
+        .asciiz  "Some long string."
