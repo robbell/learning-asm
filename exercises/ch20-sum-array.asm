@@ -49,17 +49,16 @@ loop:
 neg:
         addu  $12, $12, $10 #  negative: add to NEG
 
-
 ifend:
         addiu $8, $8, 1     # count++
         addiu $9, $9, 4     # point at next entry
 
         j     loop
-        sll   $0, $0, 0       # branch delay
+        sll   $0, $0, 0     # branch delay
 
 done:   
-        sll   $0, $0, 0        #  target for branch
+        sll   $0, $0, 0     #  target for branch
 
         .data
-size:   .word  4
-array:  .word  1, 2, -2, -1
+size:   .word  12
+array:  .word  1, 2, 9, 54, -23, 18, 40, 0, -9, -2, -1, 22
