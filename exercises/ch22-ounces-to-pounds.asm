@@ -34,5 +34,5 @@ main:   li      $v0, 4       # print prompt
 
         .data
 prompt: .asciiz "Enter ounces: "
-pout:   .asciiz " Pounds\n"
+pout:   .asciiz " Pounds, "
 ozout:  .asciiz " Ounces\n"
