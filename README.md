@@ -37,7 +37,7 @@ Minus one added to plus one gives zero. So if a particular bit pattern results i
     1100 0111
     ```
 
-#### Use `ori` to load a register with a negative integer
+### Use `ori` to load a register with a negative integer
 
 `ori` (bitwise or immediate) will accept a 16 bit constant and load it into a 32 bit register. The binary representation will be zero padded to fill 32 bits, so can't be a two's complement negative integer at loading time.
 
